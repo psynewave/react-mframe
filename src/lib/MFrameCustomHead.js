@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const MFrameCustomHead = ({ title, children, styles, links }) => {
     const Title = typeof(title) !== "undefined" ? <title>{title}</title> : undefined;
@@ -24,5 +25,12 @@ const MFrameCustomHead = ({ title, children, styles, links }) => {
         </>
     )
 }
+
+MFrameCustomHead.propTypes = {
+    title: PropTypes.string,
+    styles: PropTypes.string,
+    links: PropTypes.array
+}
+
 
 export default MFrameCustomHead;

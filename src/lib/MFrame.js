@@ -18,15 +18,20 @@ class AFrame extends React.Component {
   }
 
   componentDidMount() {
-    this.aFrameDoc =  this.ifr.contentDocument;
-    this.aFrameHead = this.aFrameDoc.head
-    this.aFrameBody = this.aFrameDoc.body
-    this.aFrameWindow = this.aFrameDoc.defaultView || this.aFrameDoc.parentView;
+    if(typeof(this.props.children) !== "undefined"){
 
-    if(typeof(this.props.children) !== "undefined" && typeof(this.props.autoResizeContent) !== "undefined"){
-      this.timeoutToken = setTimeout(this.adjustIframeHeight, 500)
+      this.aFrameDoc =  this.ifr.contentDocument;
+      this.aFrameHead = this.aFrameDoc !== null ? this.aFrameDoc.head : undefined;
+      this.aFrameBody = this.aFrameDoc !== null ? this.aFrameDoc.body : undefined;
+      this.aFrameWindow = this.aFrameDoc !== null ? this.aFrameDoc.defaultView || this.aFrameDoc.parentView : undefined;
+
+      if( typeof(this.props.autoResizeContent) !== "undefined" ) {
+        this.timeoutToken = setTimeout(this.adjustIframeHeight, 500)
+      }
+
+      this.forceUpdate();
     }
-    this.forceUpdate();
+
   }
 
   componentWillUnmount() {
