@@ -1,6 +1,7 @@
 {
   "name": "react-mframe",
-  "version": "0.1.3",
+  "homepage": "http://psynewave.github.io/mframe-demo-page",
+  "version": "0.1.4",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "files": [
