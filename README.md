@@ -105,6 +105,22 @@ IFrame - Autosizing Custom Content - Inject External CSS
     </MFrame>
 ```
 
+## Example Functions
+
+I just used these to demonstrate how you can pass custom functions to MFrame they aren't anything special I just personally get frustrated when documentation mentions a function without defining it.
+
+```
+export const triggeredEvent = (event, message) => {
+    console.log(`${event} ${message}`);
+}
+```
+
+```
+export const customHead = (title, styles, links) => (
+    <MFrameCustomHead title={title} styles={styles} links={links} />
+);
+```
+
 ## Built With
 
 * [React](https://reactjs.org/) - The web framework used
