@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import MFrame from '../MFrame';
 
 it('has an id', () => {
@@ -66,6 +66,18 @@ it('has a responsive layout', () => {
         width: "100%",
         height: "100%"
     });
+});
+
+it('has a child', () => {
+    const hello = <h1>Hello World</h1>;
+    const wrapper = mount(<MFrame>{hello}</MFrame>);
+    expect(wrapper).toHaveRef('mframechild');
+});
+
+it('does not have a child', () => {
+    const src = "https://psynewave.github.io/mframe-demo-page/"
+    const wrapper = mount(<MFrame src={src} />);
+    expect(wrapper).not.toHaveRef('mframechild');
 });
 
 /*

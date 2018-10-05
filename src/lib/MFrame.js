@@ -2,15 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 
-class AFrame extends React.Component {
+class mFrame extends React.Component {
 
   adjustIframeHeight = () => {
       setTimeout(() => {
-          const aframeDOM = ReactDOM.findDOMNode(this.ifr);
-          const testHeight = aframeDOM.contentWindow.document.body && aframeDOM.style.height !== aframeDOM.contentWindow.document.body.scrollHeight;
+          const mFrameDOM = ReactDOM.findDOMNode(this.miframe);
+          const testHeight = mFrameDOM.contentWindow.document.body && mFrameDOM.style.height !== mFrameDOM.contentWindow.document.body.scrollHeight;
 
           if (testHeight) {
-            aframeDOM.style.height = aframeDOM.contentWindow.document.body.scrollHeight + 'px'
+            mFrameDOM.style.height = mFrameDOM.contentWindow.document.body.scrollHeight + 'px'
           }
 
           this.timeoutToken = setTimeout(this.adjustIframeHeight, 500)
@@ -20,10 +20,10 @@ class AFrame extends React.Component {
   componentDidMount() {
     if(typeof(this.props.children) !== "undefined"){
 
-      this.aFrameDoc =  typeof(this.ifr) !== "undefined" ? this.ifr.contentDocument : null;
-      this.aFrameHead = this.aFrameDoc !== null ? this.aFrameDoc.head : undefined;
-      this.aFrameBody = this.aFrameDoc !== null ? this.aFrameDoc.body : undefined;
-      this.aFrameWindow = this.aFrameDoc !== null ? this.aFrameDoc.defaultView || this.aFrameDoc.parentView : undefined;
+      this.mFrameDoc =  typeof(this.miframe) !== "undefined" ? this.miframe.contentDocument : null;
+      this.mFrameHead = this.mFrameDoc !== null ? this.mFrameDoc.head : undefined;
+      this.mFrameBody = this.mFrameDoc !== null ? this.mFrameDoc.body : undefined;
+      this.mFrameWindow = this.mFrameDoc !== null ? this.mFrameDoc.defaultView || this.mFrameDoc.parentView : undefined;
 
       if( typeof(this.props.autoResizeContent) !== "undefined" ) {
         this.timeoutToken = setTimeout(this.adjustIframeHeight, 500)
@@ -80,6 +80,12 @@ class AFrame extends React.Component {
       props.styles || {}
   )
 
+  const portalchild = typeof(children) === "undefined" ? undefined :
+  <div ref="mframechild">
+      {this.mFrameHead && ReactDOM.createPortal(head, this.mFrameHead)}
+      {this.mFrameBody && ReactDOM.createPortal(children, this.mFrameBody)}
+  </div>
+
       return (
         <iframe
           id={id}
@@ -95,16 +101,15 @@ class AFrame extends React.Component {
           sandbox={sandbox}
           target={target}
           scrolling={scrolling}
-          ref={ifr => (this.ifr = ifr)}
+          ref={miframe => (this.miframe = miframe)}
         >
-          {this.aFrameHead && ReactDOM.createPortal(head, this.aFrameHead)}
-          {this.aFrameBody && ReactDOM.createPortal(children, this.aFrameBody)}
+          {portalchild}
         </iframe>
       )
   }
 }
 
-AFrame.propTypes = {
+mFrame.propTypes = {
   src: PropTypes.string,
   id: PropTypes.string,
   className: PropTypes.string,
@@ -129,5 +134,5 @@ AFrame.propTypes = {
   autoResizeContent: PropTypes.bool
 }
 
-export default AFrame;
+export default mFrame;
 
