@@ -42,7 +42,7 @@ class mFrame extends React.Component {
     const props = this.props;
     const noop = function(){};
     const units = ['px', '%', 'vh'];
-    const { children, head, src, id, className, title, allowFullScreen, sandbox, allow, display, border, boxSizing, scrolling, responsive } = props;
+    const { children, head, src, id, className, title, allowFullScreen, sandbox, allow, display, border, boxSizing, scrolling, responsive, name } = props;
 
     const height = typeof(props.height) !== "undefined" ? units.some(unit=>props.height.includes(unit)) ? props.height : `${props.height}px` : "100%";
     const width = typeof(props.width) !== "undefined" ? units.some(unit=>props.width.includes(unit)) ? props.width : `${props.width}px` : "100%";
@@ -96,6 +96,7 @@ class mFrame extends React.Component {
           allowFullScreen={allowFullScreen}
           allow={allow}
           onLoad={onLoad}
+          name={name}
           onMouseOver={onMouseOver}
           onMouseOut={onMouseOut}
           sandbox={sandbox}

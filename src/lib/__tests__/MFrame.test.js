@@ -106,13 +106,39 @@ describe('<MFrame />', () => {
         expect(wrapper).not.toHaveRef('mframechild');
     });
 
+    it('has a name property', () => {
+        const name = "mframe";
+        const wrapper = shallow(<MFrame name={name} />);
+        expect(wrapper).toHaveProp('name', name);
+    });
+
+    it('has a sandbox property', () => {
+        const sandbox = "allow-same-origin allow-scripts allow-popups allow-forms";
+        const wrapper = shallow(<MFrame sandbox={sandbox} />);
+        expect(wrapper).toHaveProp('sandbox', sandbox);
+    });
+
+    it('has an allow property', () => {
+        const allow = "geolocation";
+        const wrapper = shallow(<MFrame allow={allow} />);
+        expect(wrapper).toHaveProp('allow', allow);
+    });
+
+    it('has custom styles', () => {
+        const styles = {
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%"
+        };
+        const wrapper = shallow(<MFrame styles={styles} />);
+        expect(wrapper).toHaveStyle(styles);
+    });
+
 });
 
 /*
-display: PropTypes.string,
-name: PropTypes.string,
-sandbox: PropTypes.string,
-allow: PropTypes.string,
 styles: PropTypes.object,
 head: PropTypes.object,
 autoResizeContent: PropTypes.bool
