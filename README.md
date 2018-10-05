@@ -1,4 +1,4 @@
-# React AFrame
+# React MFrame
 
 A react component for making adding iframes to your react project as simple as possible. Supports both external iframes and dynamic iframes using react portal. You can add event listeners pass dynamic styles and even have your dynamic content iframes resize automatically.
 
@@ -7,7 +7,7 @@ A react component for making adding iframes to your react project as simple as p
 IFrame - Load and Mouse Interaction Events
 
 ```
-<AFrame src="https://share.constitutioncenter.org/amendment-xi"
+<MFrame src="https://share.constitutioncenter.org/amendment-xi"
         width="560"
         id="ConstitutionEmbed"
         className="iFrameConstitution"
@@ -24,7 +24,7 @@ IFrame - Responsive Iframe
 
 ```
 <div style={{ position: "relative", paddingBottom: "56.25%", paddingTop: "35px", height: 0, overflow: "hidden"}}>
-    <AFrame src="https://www.youtube.com/embed/pTA0DSfrGZ0"
+    <MFrame src="https://www.youtube.com/embed/pTA0DSfrGZ0"
             responsive
             allowFullScreen
     />
@@ -34,7 +34,7 @@ IFrame - Responsive Iframe
 Iframe - Using sandbox options
 
 ```
-<AFrame src="https://platform.twitter.com/widgets/tweet_button.html"
+<MFrame src="https://platform.twitter.com/widgets/tweet_button.html"
             position="relative"
             width="61px"
             id="TwitterEmbed"
@@ -49,7 +49,7 @@ Iframe - Using sandbox options
 IFrame - Setting Scrolling Margins Etc...
 
 ```
-<AFrame src="https://maps.google.com/maps?width=100%&amp;height=600&amp;hl=en&amp;coord=37.374907, -122.012103&amp;q=740%20Kifer%20Rd%20Sunnyvale%2C%20CA%2094086+(MLSListings)&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=B&amp;output=embed"
+<MFrame src="https://maps.google.com/maps?width=100%&amp;height=600&amp;hl=en&amp;coord=37.374907, -122.012103&amp;q=740%20Kifer%20Rd%20Sunnyvale%2C%20CA%2094086+(MLSListings)&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=B&amp;output=embed"
         position="relative"
         width="100%"
         id="GoogleMapEmbed"
@@ -66,7 +66,7 @@ IFrame - Setting Scrolling Margins Etc...
 IFrame - Passing Custom Content.
 
 ```
-<AFrame head={customHead("Passed Title", customStyles)}
+<MFrame head={customHead("Passed Title", customStyles)}
         height="200"
         position="relative"
         marginheight="10"
@@ -75,13 +75,13 @@ IFrame - Passing Custom Content.
     <h1 className="red">Salve Terra Rubrum</h1>
     <h1 className="blue">Salve Terra Caeruleum</h1>
     </div>
-</AFrame>
+</MFrame>
 ```
 
 IFrame - Autosizing Custom Content - Inject External CSS
 
 ```
-    <AFrame
+    <MFrame
     head={customHead("Passed Title", undefined, ["https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css", "https://use.fontawesome.com/releases/v5.3.1/css/all.css"])}
     width="50%"
     autoResizeContent
@@ -102,7 +102,7 @@ IFrame - Autosizing Custom Content - Inject External CSS
         </div>
     </div>
     </div>
-    </AFrame>
+    </MFrame>
 ```
 
 ## Built With
