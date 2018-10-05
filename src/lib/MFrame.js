@@ -20,7 +20,7 @@ class AFrame extends React.Component {
   componentDidMount() {
     if(typeof(this.props.children) !== "undefined"){
 
-      this.aFrameDoc =  this.ifr.contentDocument;
+      this.aFrameDoc =  typeof(this.ifr) !== "undefined" ? this.ifr.contentDocument : null;
       this.aFrameHead = this.aFrameDoc !== null ? this.aFrameDoc.head : undefined;
       this.aFrameBody = this.aFrameDoc !== null ? this.aFrameDoc.body : undefined;
       this.aFrameWindow = this.aFrameDoc !== null ? this.aFrameDoc.defaultView || this.aFrameDoc.parentView : undefined;
