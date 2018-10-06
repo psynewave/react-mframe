@@ -54,7 +54,3 @@ describe('<MFrame /> portal with custom head tag', () => {
     expect(doc.contentDocument.head.querySelectorAll('link').length).toEqual(2);
   });
 });
-
-/*
-autoResizeContent: PropTypes.bool
-*/
