@@ -20,9 +20,11 @@ class MFrameMouseOutTest extends React.Component {
     }
   }
 
-it('is able to respond to MouseOut events', () => {
-  const wrapper = mount(<MFrameMouseOutTest />);
-  expect(wrapper).toHaveState('count', 0);
-  wrapper.find('iframe').simulate('mouseout');
-  expect(wrapper).toHaveState('count', 1);
-});
+  describe('<MFrame /> mouseout events', () => {
+    it('mouseout event fires', () => {
+      const wrapper = mount(<MFrameMouseOutTest />);
+      expect(wrapper).toHaveState('count', 0);
+      wrapper.find('iframe').simulate('mouseout');
+      expect(wrapper).toHaveState('count', 1);
+    });
+  });

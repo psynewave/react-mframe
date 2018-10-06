@@ -137,9 +137,3 @@ describe('<MFrame />', () => {
     });
 
 });
-
-/*
-styles: PropTypes.object,
-head: PropTypes.object,
-autoResizeContent: PropTypes.bool
-*/

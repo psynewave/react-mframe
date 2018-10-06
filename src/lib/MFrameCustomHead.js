@@ -28,8 +28,11 @@ const MFrameCustomHead = ({ title, children, styles, links }) => {
 
 MFrameCustomHead.propTypes = {
     title: PropTypes.string,
-    styles: PropTypes.string,
-    links: PropTypes.array
+    styles: PropTypes.object,
+    links: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.array
+    ]),
 }
 
 

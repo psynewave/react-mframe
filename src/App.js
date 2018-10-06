@@ -81,7 +81,56 @@ class App extends React.Component {
       </div>
     </MFrame>
 
-    <h2>IFrame - Autosizing Custom Content - Inject External CSS </h2>
+    <h2>IFrame - Autosizing Custom Content - Inject External CSS (Single) </h2>
+
+    <MFrame
+      head={customHead("Passed Title", `body{padding-top:10px;}`, "https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.css")}
+      width="50%"
+      autoResizeContent
+      >
+      <div class="ui container">
+      <div className="ui cards">
+        <div className="card">
+          <div className="content">
+            <div className="header">Elliot Fu</div>
+            <div className="description">
+              Elliot Fu is a film-maker from New York.
+            </div>
+          </div>
+          <div className="ui bottom attached button">
+            <i className="add icon"></i>
+            Add Friend
+          </div>
+        </div>
+        <div className="card">
+          <div className="content">
+            <div className="header">Veronika Ossi</div>
+            <div className="description">
+              Veronika Ossi is a set designer living in New York who enjoys kittens, music, and partying.
+            </div>
+          </div>
+          <div className="ui bottom attached button">
+            <i className="add icon"></i>
+            Add Friend
+          </div>
+        </div>
+        <div className="card">
+          <div className="content">
+            <div className="header">Jenny Hess</div>
+            <div className="description">
+              Jenny is a student studying Media Management at the New School
+            </div>
+          </div>
+          <div className="ui bottom attached button">
+            <i className="add icon"></i>
+            Add Friend
+          </div>
+        </div>
+      </div>
+      </div>
+    </MFrame>
+
+    <h2>IFrame - Autosizing Custom Content - Inject External CSS (Multiple) </h2>
 
       <MFrame
         head={customHead("Passed Title", undefined, ["https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css", "https://use.fontawesome.com/releases/v5.3.1/css/all.css"])}
