@@ -1,8 +1,6 @@
 # React MFrame
 
-[![Build Status](https://api.travis-ci.com/psynewave/react-mframe.svg?branch=master)](https://travis-ci.com/psynewave/react-mframe)
-
-[![NSP Status](https://nodesecurity.io/orgs/psynewave/projects/0f9b6ff1-23bc-4e99-a95c-1f9815225414/badge)](https://nodesecurity.io/orgs/psynewave/projects/0f9b6ff1-23bc-4e99-a95c-1f9815225414)
+[![Build Status](https://api.travis-ci.com/psynewave/react-mframe.svg?branch=master)](https://travis-ci.com/psynewave/react-mframe) [![NSP Status](https://nodesecurity.io/orgs/psynewave/projects/0f9b6ff1-23bc-4e99-a95c-1f9815225414/badge)](https://nodesecurity.io/orgs/psynewave/projects/0f9b6ff1-23bc-4e99-a95c-1f9815225414)
 
 A react component for making adding iframes to your react project as simple as possible. Supports both external iframes and dynamic iframes using react portal. You can add event listeners pass dynamic styles and even have your dynamic content iframes resize automatically.
 
