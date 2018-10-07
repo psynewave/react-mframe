@@ -11,7 +11,7 @@
     "start": "react-scripts start",
     "build-examples": "react-scripts build",
     "test": "react-scripts test --env=jsdom --verbose",
-    "coverage": "react-scripts test --env=jsdom --coverage --collectCoverageFrom=src/lib/*.js --collectCoverageFrom=!src/lib/TestComponents/*.js",
+    "coverage": "react-scripts test --env=jsdom --coverage",
     "eject": "react-scripts eject",
     "build": "rimraf dist && NODE_ENV=production babel src/lib --out-dir dist --copy-files --ignore __tests__,spec.js,test.js,__snapshots__",
     "coveralls": "cat ./coverage/lcov.info | node node_modules/.bin/coveralls"
@@ -43,5 +43,11 @@
     "enzyme-adapter-react-16": "^1.6.0",
     "jest-enzyme": "^6.1.2",
     "react-test-renderer": "^16.5.2"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/lib/*.js",
+      "!src/lib/TestComponents/*.js"
+    ]
   }
 }
