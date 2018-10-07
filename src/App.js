@@ -88,7 +88,7 @@ class App extends React.Component {
       width="50%"
       autoResizeContent
       >
-      <div class="ui container">
+      <div className="ui container">
       <div className="ui cards">
         <div className="card">
           <div className="content">
@@ -155,7 +155,13 @@ class App extends React.Component {
         </div>
       </MFrame>
 
-
+      <MFrame
+          head={customHead("Passed Title")}
+          width="50%"
+          autoResizeContent
+          >
+          <div style={{display: 'block', height: '1000px', background: "black"}}>something</div>
+        </MFrame>
 
   </div>
     );

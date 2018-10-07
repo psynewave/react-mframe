@@ -1,5 +1,4 @@
 import React from "react";
-import { mount} from 'enzyme';
 import MFrame from '../MFrame';
 
 class MFrameOnLoadTest extends React.Component {
@@ -21,10 +20,4 @@ class MFrameOnLoadTest extends React.Component {
     }
   }
 
-it('is able to perform onload functions', () => {
-  const wrapper = mount(<MFrameOnLoadTest />);
-  expect(wrapper.state('count')).not.toEqual(1)
-  setTimeout(() => {
-    expect(wrapper.state('count')).toEqual(1)
-  }, 1);
-});
+export default MFrameOnLoadTest

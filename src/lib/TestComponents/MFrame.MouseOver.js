@@ -1,5 +1,4 @@
 import React from "react";
-import { mount } from 'enzyme';
 import MFrame from '../MFrame';
 
 class MFrameMouseOverTest extends React.Component {
@@ -20,9 +19,4 @@ class MFrameMouseOverTest extends React.Component {
     }
   }
 
-it('is able to respond to MouseOver events', () => {
-  const wrapper = mount(<MFrameMouseOverTest />);
-  expect(wrapper).toHaveState('count', 0);
-  wrapper.find('iframe').simulate('mouseover');
-  expect(wrapper).toHaveState('count', 1);
-});
+export default MFrameMouseOverTest;

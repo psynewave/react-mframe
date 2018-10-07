@@ -1,6 +1,10 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import MFrame from '../MFrame';
+import MFrameOnLoadTest from '../TestComponents/MFrame.OnLoad';
+import MFrameMouseOverTest from '../TestComponents/MFrame.MouseOver';
+import MFrameMouseOutTest from '../TestComponents/MFrame.MouseOut';
+import {customHead} from '../../constants/'
 
 describe('<MFrame />', () => {
 
@@ -136,4 +140,55 @@ describe('<MFrame />', () => {
         expect(wrapper).toHaveStyle(styles);
     });
 
+    it('is able to perform onload functions', () => {
+        const wrapper = mount(<MFrameOnLoadTest />);
+        expect(wrapper.state('count')).not.toEqual(1)
+        setTimeout(() => {
+            expect(wrapper.state('count')).toEqual(1)
+        }, 1);
+    });
+
+    it('is able to respond to MouseOver events', () => {
+        const wrapper = mount(<MFrameMouseOverTest />);
+        expect(wrapper).toHaveState('count', 0);
+        wrapper.find('iframe').simulate('mouseover');
+        expect(wrapper).toHaveState('count', 1);
+    });
+
+    it('is able to respond to MouseOver events', () => {
+        const wrapper = mount(<MFrameMouseOverTest />);
+        expect(wrapper).toHaveState('count', 0);
+        wrapper.find('iframe').simulate('mouseover');
+        expect(wrapper).toHaveState('count', 1);
+    });
+
+    it('mouseout event fires', () => {
+        const wrapper = mount(<MFrameMouseOutTest />);
+        expect(wrapper).toHaveState('count', 0);
+        wrapper.find('iframe').simulate('mouseout');
+        expect(wrapper).toHaveState('count', 1);
+    });
+
+    it('automatically resizes the iframe with injected content', () => {
+        const wrapper = mount(<MFrame
+            head={customHead("Passed Title")}
+            width="50%"
+            autoResizeContent
+            >
+            <div style={{display: 'block', height: '1000px', background: "black"}}>something</div>
+          </MFrame>);
+        expect(wrapper).toHaveState('autosized', true);
+    });
+
 });
+
+/*
+
+
+
+    setTimeout(() => {
+        expect(wrapper.find('.editField span').at(0).text().trim()).toEqual(jsonDataRooms.data[0].name);
+        wrapper.unmount();
+        done();
+      }, 1000);
+*/

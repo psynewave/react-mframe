@@ -4,17 +4,22 @@ import PropTypes from 'prop-types';
 
 class mFrame extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.state = { autosized: false };
+  }
+
   adjustIframeHeight = () => {
-      setTimeout(() => {
-          const mFrameDOM = ReactDOM.findDOMNode(this.miframe);
-          const testHeight = mFrameDOM.contentWindow.document.body && mFrameDOM.style.height !== mFrameDOM.contentWindow.document.body.scrollHeight;
+    setTimeout(() => {
+      const mFrameDOM = ReactDOM.findDOMNode(this.miframe);
+      const testHeight = mFrameDOM.contentWindow.document.body && mFrameDOM.style.height !== mFrameDOM.contentWindow.document.body.scrollHeight;
 
-          if (testHeight) {
-            mFrameDOM.style.height = mFrameDOM.contentWindow.document.body.scrollHeight + 'px'
-          }
+      if (testHeight) {
+        mFrameDOM.style.height = mFrameDOM.contentWindow.document.body.scrollHeight + 'px';
+      }
 
-          this.timeoutToken = setTimeout(this.adjustIframeHeight, 500)
-      }, 200)
+      this.timeoutToken = setTimeout(this.adjustIframeHeight, 200)
+    });
   }
 
   componentDidMount() {
@@ -26,7 +31,8 @@ class mFrame extends React.Component {
       this.mFrameWindow = this.mFrameDoc !== null ? this.mFrameDoc.defaultView || this.mFrameDoc.parentView : undefined;
 
       if( typeof(this.props.autoResizeContent) !== "undefined" ) {
-        this.timeoutToken = setTimeout(this.adjustIframeHeight, 500)
+        this.timeoutToken = this.adjustIframeHeight();
+        this.setState({autosized: true});
       }
 
       this.forceUpdate();

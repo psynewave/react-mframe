@@ -1,5 +1,4 @@
 import React from "react";
-import { mount } from 'enzyme';
 import MFrame from '../MFrame';
 
 class MFrameMouseOutTest extends React.Component {
@@ -20,11 +19,4 @@ class MFrameMouseOutTest extends React.Component {
     }
   }
 
-  describe('<MFrame /> mouseout events', () => {
-    it('mouseout event fires', () => {
-      const wrapper = mount(<MFrameMouseOutTest />);
-      expect(wrapper).toHaveState('count', 0);
-      wrapper.find('iframe').simulate('mouseout');
-      expect(wrapper).toHaveState('count', 1);
-    });
-  });
+export default MFrameMouseOutTest;
