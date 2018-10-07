@@ -1,7 +1,7 @@
 {
   "name": "react-mframe",
   "homepage": "http://psynewave.github.io/react-mframe",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "files": [
@@ -26,7 +26,11 @@
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-scripts": "^2.0.4",
-    "rimraf": "^2.6.2"
+    "rimraf": "^2.6.2",
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.6.0",
+    "jest-enzyme": "^6.1.2",
+    "react-test-renderer": "^16.5.2"
   },
   "browserslist": [
     ">0.2%",
@@ -37,12 +41,6 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/psynewave/react-mframe"
-  },
-  "dependencies": {
-    "enzyme": "^3.7.0",
-    "enzyme-adapter-react-16": "^1.6.0",
-    "jest-enzyme": "^6.1.2",
-    "react-test-renderer": "^16.5.2"
   },
   "jest": {
     "collectCoverageFrom": [

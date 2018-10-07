@@ -1,58 +1,60 @@
-import _classCallCheck from "/Users/mflavin/Desktop/side-projects/react-aframe/node_modules/@babel/runtime/helpers/esm/classCallCheck";
-import _createClass from "/Users/mflavin/Desktop/side-projects/react-aframe/node_modules/@babel/runtime/helpers/esm/createClass";
-import _possibleConstructorReturn from "/Users/mflavin/Desktop/side-projects/react-aframe/node_modules/@babel/runtime/helpers/esm/possibleConstructorReturn";
-import _getPrototypeOf from "/Users/mflavin/Desktop/side-projects/react-aframe/node_modules/@babel/runtime/helpers/esm/getPrototypeOf";
-import _inherits from "/Users/mflavin/Desktop/side-projects/react-aframe/node_modules/@babel/runtime/helpers/esm/inherits";
+import _classCallCheck from "/Users/mflavin/Desktop/side-projects/react-mframe/node_modules/@babel/runtime/helpers/esm/classCallCheck";
+import _createClass from "/Users/mflavin/Desktop/side-projects/react-mframe/node_modules/@babel/runtime/helpers/esm/createClass";
+import _possibleConstructorReturn from "/Users/mflavin/Desktop/side-projects/react-mframe/node_modules/@babel/runtime/helpers/esm/possibleConstructorReturn";
+import _getPrototypeOf from "/Users/mflavin/Desktop/side-projects/react-mframe/node_modules/@babel/runtime/helpers/esm/getPrototypeOf";
+import _inherits from "/Users/mflavin/Desktop/side-projects/react-mframe/node_modules/@babel/runtime/helpers/esm/inherits";
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-var AFrame =
+var mFrame =
 /*#__PURE__*/
 function (_React$Component) {
-  _inherits(AFrame, _React$Component);
+  _inherits(mFrame, _React$Component);
 
-  function AFrame() {
-    var _getPrototypeOf2;
-
+  function mFrame(props) {
     var _this;
 
-    _classCallCheck(this, AFrame);
+    _classCallCheck(this, mFrame);
 
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(AFrame)).call.apply(_getPrototypeOf2, [this].concat(args)));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(mFrame).call(this, props));
 
     _this.adjustIframeHeight = function () {
       setTimeout(function () {
-        var aframeDOM = ReactDOM.findDOMNode(_this.ifr);
-        var testHeight = aframeDOM.contentWindow.document.body && aframeDOM.style.height !== aframeDOM.contentWindow.document.body.scrollHeight;
+        var mFrameDOM = ReactDOM.findDOMNode(_this.miframe);
+        var testHeight = mFrameDOM.contentWindow.document.body && mFrameDOM.style.height !== mFrameDOM.contentWindow.document.body.scrollHeight;
 
         if (testHeight) {
-          aframeDOM.style.height = aframeDOM.contentWindow.document.body.scrollHeight + 'px';
+          mFrameDOM.style.height = mFrameDOM.contentWindow.document.body.scrollHeight + 'px';
         }
 
-        _this.timeoutToken = setTimeout(_this.adjustIframeHeight, 500);
-      }, 200);
+        _this.timeoutToken = setTimeout(_this.adjustIframeHeight, 200);
+      });
     };
 
+    _this.state = {
+      autosized: false
+    };
     return _this;
   }
 
-  _createClass(AFrame, [{
+  _createClass(mFrame, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.aFrameDoc = this.ifr.contentDocument;
-      this.aFrameHead = this.aFrameDoc.head;
-      this.aFrameBody = this.aFrameDoc.body;
-      this.aFrameWindow = this.aFrameDoc.defaultView || this.aFrameDoc.parentView;
+      if (typeof this.props.children !== "undefined") {
+        this.mFrameDoc = typeof this.miframe !== "undefined" ? this.miframe.contentDocument : null;
+        this.mFrameHead = this.mFrameDoc !== null ? this.mFrameDoc.head : undefined;
+        this.mFrameBody = this.mFrameDoc !== null ? this.mFrameDoc.body : undefined;
+        this.mFrameWindow = this.mFrameDoc !== null ? this.mFrameDoc.defaultView || this.mFrameDoc.parentView : undefined;
 
-      if (typeof this.props.children !== "undefined" && typeof this.props.autoResizeContent !== "undefined") {
-        this.timeoutToken = setTimeout(this.adjustIframeHeight, 500);
+        if (typeof this.props.autoResizeContent !== "undefined") {
+          this.timeoutToken = this.adjustIframeHeight();
+          this.setState({
+            autosized: true
+          });
+        }
+
+        this.forceUpdate();
       }
-
-      this.forceUpdate();
     }
   }, {
     key: "componentWillUnmount",
@@ -82,7 +84,8 @@ function (_React$Component) {
           border = props.border,
           boxSizing = props.boxSizing,
           scrolling = props.scrolling,
-          responsive = props.responsive;
+          responsive = props.responsive,
+          name = props.name;
       var height = typeof props.height !== "undefined" ? units.some(function (unit) {
         return props.height.includes(unit);
       }) ? props.height : "".concat(props.height, "px") : "100%";
@@ -123,6 +126,9 @@ function (_React$Component) {
         width: "100%",
         height: "100%"
       } : {}, props.styles || {});
+      var portalchild = typeof children === "undefined" ? undefined : React.createElement("div", {
+        ref: "mframechild"
+      }, this.mFrameHead && ReactDOM.createPortal(head, this.mFrameHead), this.mFrameBody && ReactDOM.createPortal(children, this.mFrameBody));
       return React.createElement("iframe", {
         id: id,
         className: className,
@@ -132,19 +138,20 @@ function (_React$Component) {
         allowFullScreen: allowFullScreen,
         allow: allow,
         onLoad: onLoad,
+        name: name,
         onMouseOver: onMouseOver,
         onMouseOut: onMouseOut,
         sandbox: sandbox,
         target: target,
         scrolling: scrolling,
-        ref: function ref(ifr) {
-          return _this2.ifr = ifr;
+        ref: function ref(miframe) {
+          return _this2.miframe = miframe;
         }
-      }, this.aFrameHead && ReactDOM.createPortal(head, this.aFrameHead), this.aFrameBody && ReactDOM.createPortal(children, this.aFrameBody));
+      }, portalchild);
     }
   }]);
 
-  return AFrame;
+  return mFrame;
 }(React.Component);
 
-export default AFrame;
+export default mFrame;
